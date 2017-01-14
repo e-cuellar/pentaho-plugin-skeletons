@@ -20,4 +20,8 @@ mvn archetype:generate \
  -Dplugin_category=Transform \
  -Dplugin_description="This is what my step does."
 
-```
+$ cd my-step-plugin
+
+$ mvn clean install
+
+To deploy copy the generated "my-step-plugin-2.0-SNAPSHOT.kar" into "data-integration\system\karaf\deploy"

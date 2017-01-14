@@ -26,12 +26,12 @@ import org.pentaho.di.trans.step.StepDataInterface;
 
 
 public class ${plugin_class_name}Data extends BaseStepData implements StepDataInterface {
-	// Add any execution-specific data here
+  // Add any execution-specific data here
 
-	/**
-	 * 
-	 */
-	public ${plugin_class_name}Data() {
-		super();
-	}
+  /**
+   * 
+   */
+  public ${plugin_class_name}Data() {
+    super();
+  }
 }

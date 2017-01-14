@@ -36,15 +36,15 @@ import org.pentaho.di.trans.step.StepMetaInterface;
  * 
  */
 public class ${plugin_class_name} extends BaseStep implements StepInterface {
-	
-	private static Class<?> PKG = ${plugin_class_name}Meta.class; // for i18n purposes, needed by Translator2!!   $NON-NLS-1$
-	
-	public ${plugin_class_name}(StepMeta stepMeta, StepDataInterface stepDataInterface, int copyNr, TransMeta transMeta,
-		Trans trans) {
-		super(stepMeta, stepDataInterface, copyNr, transMeta, trans);
-	}
-	
-	/**
+  
+  private static Class<?> PKG = ${plugin_class_name}Meta.class; // for i18n purposes, needed by Translator2!!   $NON-NLS-1$
+  
+  public ${plugin_class_name}( StepMeta stepMeta, StepDataInterface stepDataInterface, int copyNr, TransMeta transMeta,
+    Trans trans ) {
+    super( stepMeta, stepDataInterface, copyNr, transMeta, trans );
+  }
+  
+  /**
      * Initialize and do work where other steps need to wait for...
      *
      * @param stepMetaInterface
@@ -53,24 +53,24 @@ public class ${plugin_class_name} extends BaseStep implements StepInterface {
      *          The data to initialize
      */
     public boolean init( StepMetaInterface stepMetaInterface, StepDataInterface stepDataInterface ) {
-    	return super.init( stepMetaInterface, stepDataInterface );
+      return super.init( stepMetaInterface, stepDataInterface );
     }
 
-	public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
-	{
-		Object[] r=getRow();    // get row, set busy!
-		if (r==null) {
-			// no more input to be expected...
-			setOutputDone();
-			return false;
-		}
-		
-		putRow(getInputRowMeta(), r);     // copy row to possible alternate rowset(s).
+  public boolean processRow( StepMetaInterface smi, StepDataInterface sdi ) throws KettleException {
+    Object[] r = getRow(); // get row, set busy!
+    if ( r == null ) {
+      // no more input to be expected...
+      setOutputDone();
+      return false;
+    }
+    
+    putRow( getInputRowMeta(), r ); // copy row to possible alternate rowset(s).
 
-        if (checkFeedback(getLinesRead())) {
-        	if(log.isBasic()) logBasic(BaseMessages.getString(PKG, "${plugin_class_name}.Log.LineNumber")+getLinesRead()); 
-        }
-			
-		return true;
-	}
+    if ( checkFeedback( getLinesRead() ) ) {
+      if ( log.isBasic() )
+        logBasic( BaseMessages.getString( PKG, "${plugin_class_name}.Log.LineNumber" ) + getLinesRead() );
+    }
+      
+    return true;
+  }
 }
