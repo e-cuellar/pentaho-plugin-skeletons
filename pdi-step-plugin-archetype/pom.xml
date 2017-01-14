@@ -7,6 +7,12 @@
   <version>2.0</version>
   <packaging>maven-archetype</packaging>
 
+  <parent>
+    <groupId>org.pentaho</groupId>
+    <artifactId>pentaho-ce-jar-parent-pom</artifactId>
+    <version>RELEASE</version>
+  </parent>
+
   <name>pdi-step-plugin-archetype</name>
 
   <build>
@@ -29,6 +35,11 @@
   </build>
 
   <description>pdi-step-plugin OSGi bundle project.</description>
+
+  <properties>
+    <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+    <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+  </properties>
 
   <licenses>
     <license>

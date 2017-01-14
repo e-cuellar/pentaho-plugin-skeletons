@@ -1,6 +1,6 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
+#set($symbol_pound='#')
+#set($symbol_dollar='$')
+#set($symbol_escape='\')
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -35,16 +35,20 @@ import org.pentaho.di.trans.step.StepMetaInterface;
  * Describe your step plugin.
  * 
  */
-public class ${plugin_class_name} extends BaseStep implements StepInterface {
-	
-	private static Class<?> PKG = ${plugin_class_name}Meta.class; // for i18n purposes, needed by Translator2!!   $NON-NLS-1$
-	
-	public ${plugin_class_name}(StepMeta stepMeta, StepDataInterface stepDataInterface, int copyNr, TransMeta transMeta,
-		Trans trans) {
-		super(stepMeta, stepDataInterface, copyNr, transMeta, trans);
-	}
-	
-	/**
+public class $ {
+  plugin_class_name}extends BaseStep implements StepInterface{
+
+  private static Class<?> PKG = ${plugin_class_name}Meta.class; // for i18n purposes, needed by Translator2!! $NON-NLS-1$
+
+  public ${plugin_class_name}(
+  StepMeta stepMeta, StepDataInterface stepDataInterface,
+  int copyNr, TransMeta transMeta,
+  Trans trans)
+  {
+    super( stepMeta, stepDataInterface, copyNr, transMeta, trans );
+  }
+
+  /**
      * Initialize and do work where other steps need to wait for...
      *
      * @param stepMetaInterface
@@ -56,21 +60,21 @@ public class ${plugin_class_name} extends BaseStep implements StepInterface {
     	return super.init( stepMetaInterface, stepDataInterface );
     }
 
-	public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
-	{
-		Object[] r=getRow();    // get row, set busy!
-		if (r==null) {
-			// no more input to be expected...
-			setOutputDone();
-			return false;
-		}
-		
-		putRow(getInputRowMeta(), r);     // copy row to possible alternate rowset(s).
+  public boolean processRow( StepMetaInterface smi, StepDataInterface sdi ) throws KettleException {
+    Object[] r = getRow(); // get row, set busy!
+    if ( r == null ) {
+      // no more input to be expected...
+      setOutputDone();
+      return false;
+    }
 
-        if (checkFeedback(getLinesRead())) {
-        	if(log.isBasic()) logBasic(BaseMessages.getString(PKG, "${plugin_class_name}.Log.LineNumber")+getLinesRead()); 
-        }
-			
-		return true;
-	}
+    putRow( getInputRowMeta(), r ); // copy row to possible alternate rowset(s).
+
+    if ( checkFeedback( getLinesRead() ) ) {
+      if ( log.isBasic() )
+        logBasic( BaseMessages.getString( PKG, "${plugin_class_name}.Log.LineNumber" ) + getLinesRead() );
+    }
+
+    return true;
+  }
 }

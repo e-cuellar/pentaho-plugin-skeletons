@@ -1,6 +1,6 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
+#set($symbol_pound='#')
+#set($symbol_dollar='$')
+#set($symbol_escape='\')
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -49,17 +49,19 @@ import org.w3c.dom.Node;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Skeleton for PDI Step plugin.
  */
 @Step( id = "${plugin_class_name}", image = "${plugin_class_name}.svg", name = "${plugin_name}",
     description = "${plugin_description}", categoryDescription = "${plugin_category}" )
-public class ${plugin_class_name}Meta extends BaseStepMeta implements StepMetaInterface {
-  
-  private static Class<?> PKG = ${plugin_class_name}.class; // for i18n purposes, needed by Translator2!!   $NON-NLS-1$
+public class $ {
+  plugin_class_name}Meta extends BaseStepMeta implements StepMetaInterface{
 
-  public ${plugin_class_name}Meta() {
+  private static Class<?> PKG = ${plugin_class_name}.class; // for i18n purposes, needed by Translator2!! $NON-NLS-1$
+
+  public ${plugin_class_name}
+
+  Meta() {
     super(); // allocate BaseStepMeta
   }
 
@@ -71,55 +73,62 @@ public class ${plugin_class_name}Meta extends BaseStepMeta implements StepMetaIn
     Object retval = super.clone();
     return retval;
   }
-  
-  private void readData(Node stepnode) {
-    // Parse the XML (starting with the given stepnode) to extract the step metadata (into member variables, for example)
+
+  private void readData( Node stepnode ) {
+    // Parse the XML (starting with the given stepnode) to extract the step metadata (into member variables, for
+    // example)
   }
 
   public void setDefault() {
   }
 
-  public void readRep(Repository rep, IMetaStore metaStore, ObjectId id_step, List<DatabaseMeta> databases) throws KettleException {
-  }
-  
-  public void saveRep(Repository rep, IMetaStore metaStore, ObjectId id_transformation, ObjectId id_step)
+  public void readRep( Repository rep, IMetaStore metaStore, ObjectId id_step, List<DatabaseMeta> databases )
     throws KettleException {
   }
-  
-  public void getFields(RowMetaInterface rowMeta, String origin, RowMetaInterface[] info, StepMeta nextStep, 
-    VariableSpace space, Repository repository, IMetaStore metaStore) throws KettleStepException {
+
+  public void saveRep( Repository rep, IMetaStore metaStore, ObjectId id_transformation, ObjectId id_step )
+    throws KettleException {
+  }
+
+  public void getFields( RowMetaInterface rowMeta, String origin, RowMetaInterface[] info, StepMeta nextStep,
+      VariableSpace space, Repository repository, IMetaStore metaStore ) throws KettleStepException {
     // Default: nothing changes to rowMeta
   }
-  
-  public void check(List<CheckResultInterface> remarks, TransMeta transMeta, 
-    StepMeta stepMeta, RowMetaInterface prev, String input[], String output[],
-    RowMetaInterface info, VariableSpace space, Repository repository, 
-    IMetaStore metaStore) {
+
+  public void check( List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev,
+      String input[], String output[], RowMetaInterface info, VariableSpace space, Repository repository,
+      IMetaStore metaStore ) {
     CheckResult cr;
-    if ( prev==null || prev.size()==0 ) {
-      cr = new CheckResult(CheckResultInterface.TYPE_RESULT_WARNING, BaseMessages.getString(PKG, "${plugin_class_name}Meta.CheckResult.NotReceivingFields"), stepMeta); 
-      remarks.add(cr);
+    if ( prev == null || prev.size() == 0 ) {
+      cr =
+          new CheckResult( CheckResultInterface.TYPE_RESULT_WARNING, BaseMessages.getString( PKG,
+              "${plugin_class_name}Meta.CheckResult.NotReceivingFields" ), stepMeta );
+      remarks.add( cr );
+    } else {
+      cr =
+          new CheckResult( CheckResultInterface.TYPE_RESULT_OK, BaseMessages.getString( PKG,
+              "${plugin_class_name}Meta.CheckResult.StepRecevingData", prev.size() + "" ), stepMeta );
+      remarks.add( cr );
     }
-    else {
-      cr = new CheckResult(CheckResultInterface.TYPE_RESULT_OK, BaseMessages.getString(PKG, "${plugin_class_name}Meta.CheckResult.StepRecevingData",prev.size()+""), stepMeta);  
-      remarks.add(cr);
-    }
-    
+
     // See if we have input streams leading to this step!
     if ( input.length > 0 ) {
-      cr = new CheckResult(CheckResultInterface.TYPE_RESULT_OK, BaseMessages.getString(PKG, "${plugin_class_name}Meta.CheckResult.StepRecevingData2"), stepMeta); 
-      remarks.add(cr);
-    }
-    else {
-      cr = new CheckResult(CheckResultInterface.TYPE_RESULT_ERROR, BaseMessages.getString(PKG, "${plugin_class_name}Meta.CheckResult.NoInputReceivedFromOtherSteps"), stepMeta); 
-      remarks.add(cr);
+      cr =
+          new CheckResult( CheckResultInterface.TYPE_RESULT_OK, BaseMessages.getString( PKG,
+              "${plugin_class_name}Meta.CheckResult.StepRecevingData2" ), stepMeta );
+      remarks.add( cr );
+    } else {
+      cr =
+          new CheckResult( CheckResultInterface.TYPE_RESULT_ERROR, BaseMessages.getString( PKG,
+              "${plugin_class_name}Meta.CheckResult.NoInputReceivedFromOtherSteps" ), stepMeta );
+      remarks.add( cr );
     }
   }
-  
+
   public StepInterface getStep(StepMeta stepMeta, StepDataInterface stepDataInterface, int cnr, TransMeta tr, Trans trans) {
     return new ${plugin_class_name}(stepMeta, stepDataInterface, cnr, tr, trans);
   }
-  
+
   public StepDataInterface getStepData() {
     return new ${plugin_class_name}Data();
   }

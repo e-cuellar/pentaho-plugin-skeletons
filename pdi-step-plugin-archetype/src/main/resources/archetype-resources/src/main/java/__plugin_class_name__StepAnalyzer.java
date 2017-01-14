@@ -1,6 +1,6 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
+#set($symbol_pound='#')
+#set($symbol_dollar='$')
+#set($symbol_escape='\')
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -30,15 +30,24 @@ import org.pentaho.metaverse.api.analyzer.kettle.step.StepAnalyzer;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ${plugin_class_name}StepAnalyzer extends StepAnalyzer<${plugin_class_name}Meta> {
+public class $ {
+  plugin_class_name
+  }StepAnalyzer extends StepAnalyzer<${plugin_class_name}Meta>{
+
   @Override
-  protected Set<StepField> getUsedFields( ${plugin_class_name}Meta meta ) {
+  protected Set<StepField> getUsedFields( ${plugin_class_name}
+
+  Meta meta)
+  {
     // no incoming fields are used by the Dummy step
     return null;
   }
 
   @Override
-  protected void customAnalyze( ${plugin_class_name}Meta meta, IMetaverseNode rootNode ) throws MetaverseAnalyzerException {
+  protected void customAnalyze( ${plugin_class_name}
+
+  Meta meta, IMetaverseNode rootNode)throws MetaverseAnalyzerException
+  {
     // add any custom properties or relationships here
     rootNode.setProperty( "do_nothing", true );
   }

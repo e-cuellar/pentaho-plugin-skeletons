@@ -1,6 +1,6 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
+#set($symbol_pound='#')
+#set($symbol_dollar='$')
+#set($symbol_escape='\')
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -41,14 +41,18 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
 import java.util.ArrayList;
 import java.util.List;
 
+public class $ {
+  plugin_class_name}Dialog extends BaseStepDialog implements StepDialogInterface{
 
-public class ${plugin_class_name}Dialog extends BaseStepDialog implements StepDialogInterface {
+  private static Class<?> PKG = ${plugin_class_name}Meta.class; // for i18n purposes, needed by Translator2!! $NON-NLS-1$
 
-  private static Class<?> PKG = ${plugin_class_name}Meta.class; // for i18n purposes, needed by Translator2!!   $NON-NLS-1$
+  private ${plugin_class_name}
+  Meta meta;
 
-  private ${plugin_class_name}Meta meta;
+  public $
+  {plugin_class_name}
 
-  public ${plugin_class_name}Dialog( Shell parent, Object stepMeta, TransMeta transMeta, String stepname ) {
+  Dialog( Shell parent, Object stepMeta, TransMeta transMeta, String stepname ) {
     super( parent, (BaseStepMeta) stepMeta, transMeta, stepname );
     meta = (${plugin_class_name}Meta) stepMeta;
   }
@@ -104,7 +108,7 @@ public class ${plugin_class_name}Dialog extends BaseStepDialog implements StepDi
     wCancel = new Button( shell, SWT.PUSH );
     wCancel.setText( BaseMessages.getString( PKG, "System.Button.Cancel" ) );
 
-    setButtonPositions( new Button[]{ wOK, wCancel }, margin, wStepname );
+    setButtonPositions( new Button[] { wOK, wCancel }, margin, wStepname );
 
     // Add listeners
     lsCancel = new Listener() {
@@ -174,7 +178,7 @@ public class ${plugin_class_name}Dialog extends BaseStepDialog implements StepDi
     }
 
     stepname = wStepname.getText(); // return value
-    
+
     // TODO fill in meta object with data from UI elements
 
     dispose();
